@@ -1,5 +1,5 @@
 # web_dashboard
-![alt text](http://github.com/erincar/web_dashboard/Screenshot.png)
+![alt text](http://github.com/erincar/web_dashboard/raw/master/Screenshot.png)
 
 Personal dashboard on web. Change components at runtime.
 
