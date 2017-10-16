@@ -1,5 +1,5 @@
 # web_dashboard
-![alt text](/web_dashboard/raw/master/Screenshot.png?raw=true)
+![alt text](/Screenshot.png?raw=true)
 
 Personal dashboard on web. Change components at runtime.
 
