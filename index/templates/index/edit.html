@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+{% load static %}
+{% csrf_token %}
+<html>
+    <head>
+        <title>Dashboard Edit</title>
+        <meta name="Dashboard Edit"
+        content="width=device-width, initial-scale=1.0">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="{% static "index/css/main.css" %}">
+        <script src="{% static "index/js/main.js" %}"></script>
+    </head>
+
+    <body>
+        <header><h1>Web Dashboard</h1></header>
+        <div class="contain-box">
+            <div class="edit-bar" style="position: relative">
+                <div style="padding: 20px 10px 10px 10px;">
+                    <div id="dashboard-generator">
+                        <select id="Height">
+                            <option selected disabled>Height</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
+                        <select id="Width">
+                            <option selected disabled>Width</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
+                        <button id="generate-dashboard">Generate</button>
+                    </div>
+                    <div id="component-adder">
+                        <button id="add-component">Add Component</button>
+                    </div>
+                    <div id="user-authentication">
+                        <h3 style="text-decoration: underline">Save Your Design</h3>
+                        <input type="text" id="username" placeholder="username">
+                        <input type="password" id="password" placeholder="password">
+                        <button id="save-to-user">OK</button>
+                    </div>
+                </div>
+            </div>
+            <div class="display-cell">
+                <div id="component-container" class="component-container">
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

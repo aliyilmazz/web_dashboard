@@ -1,0 +1,121 @@
+* {
+    margin: 0 0 0 0;
+    padding: 0 0 0 0;
+    font-family: georgia;
+}
+
+select {
+    margin: 10px auto;
+}
+
+header {
+    position: fixed;
+    width: 100%;
+    height: 40px;
+    text-align: left;
+    padding-left: 4px;
+    padding-top: 0px;
+    background-color: #006080;
+    color: #AABBCC;
+}
+
+.contain-box {
+    position:fixed;
+    top:40px;
+    bottom:0px;
+    left:0px;
+    right:0px;
+}
+
+.edit-bar {
+    width: 25%;
+    height: 100%;
+    background-color: #0C2F3B;
+    color: #AABBCC;
+    float: left;
+    overflow: auto;
+}
+
+.display-cell {
+    width: 75%;
+    height: 100%;
+    background-color: #B3BCCC;
+    color: #0C2F3B;
+    float: right;
+    overflow: auto;
+}
+
+.component-container {
+    width: 80%;
+    height: 92%;
+    margin: 20px auto;
+}
+
+#dashboard-generator *,
+#component-adder select {
+    width: 30%;
+    height: auto;
+    background-color: transparent;
+    color: #AABBCC;
+    font-size: 20px;
+    border-style: none;
+}
+
+#dashboard-generator *:hover,
+#component-adder button:hover,
+#save-to-user:hover {
+    color: #CCDDEE;
+}
+
+#component-adder {
+    overflow: auto;
+}
+
+#component-adder button {
+    width = 50%;
+    height = auto;
+    background-color: transparent;
+    color: #AABBCC;
+    font-size: 32px;
+    border-style: none;
+}
+
+#user-authentication {
+    position: absolute;
+    width: auto;
+    bottom: 10px;
+}
+
+#user-authentication input,
+#save-to-user {
+    width: 20%;
+    height: auto;
+    background-color: transparent;
+    color: #AABBCC;
+    font-size: 32px;
+    border-style: none;
+}
+
+#user-authentication input[type="text"],
+#user-authentication input[type="password"] {
+    width: 80%;
+    border-bottom: 1px solid;
+    float: left;
+}
+
+#save-to-user {
+    height: inherit;
+    padding: 4px auto;
+}
+
+.component-row {
+
+}
+
+.component-cell {
+    float: left;
+    border: 1px dashed;
+    border-color: #334455;
+    text-align: center;
+    overflow: auto;
+}

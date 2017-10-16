@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+    <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script>
+    function getCookie(name) {
+        var cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            var cookies = document.cookie.split(';');
+            for (var i = 0; i < cookies.length; i++) {
+                var cookie = jQuery.trim(cookies[i]);
+                // Does this cookie string begin with the name we want?
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+    $(document).ready(function(){
+
+            var stat = {{status}}
+            if (stat==0)
+            {
+                console.log("error !! ");
+                document.getElementById('mainbanner').innerHTML = '404 NOT FOUND!';
+            }
+            else
+            {
+                console.log("error yok!!!");
+                var width  = {{width}};
+                var height = {{height}};
+                // Delete component adding children of component-adder
+                // Fill with new ones
+                console.log("selam");
+                for(i = 0; i < height; i++)
+                {
+                    var row = document.createElement('div');
+                    row.id = 'row'+i;
+                    row.className = 'component-row';
+                    row.style.height = (100 / height - 1) + "%";
+                    for(j = 0; j < width; j++)
+                    {
+                        var cell = document.createElement('div');
+                        cell.id = 'r'+i+'c'+j;
+                        cell.className = 'component-cell';
+                        cell.innerHTML = 'empty component';
+                        cell.style.width = (100 / width - 1) + "%";
+                        cell.style.height = "100%";
+                        row.appendChild(cell);
+                    }
+                    document.getElementById('component-container').appendChild(row);
+                }
+
+                var dumpstr = "{{dumpstr}}".split(",");
+                var i = 0;
+                var j = 0;
+                var length = dumpstr.length / 3 ;
+                while (i<length)
+                {
+                    var first = dumpstr[j];
+                    var second = dumpstr[j+1];
+                    var third = dumpstr[j+2];
+                    console.log(first);
+                    console.log(second);
+                    console.log(third);
+                    var elementstr = "#r" + String(third) + "c" + String(second);
+                    console.log(elementstr);
+                    var csrftoken = getCookie('csrftoken');
+                    $.ajax({url : window.location.pathname,
+                            type : "POST",
+                            data : { csrfmiddlewaretoken : csrftoken,
+                            request_type : "add-component",
+                            comp_name : first
+                        },
+                        success : function(data){
+                            //var q = document.getElementById(elementstr);
+                            //q.innerHTML = data["html"];
+                            $(elementstr).html(data["html"]);
+                            $(elementstr).find("script").each(function(i) {
+                            eval($(this).text());});
+
+                        },
+                        async: false,
+                       // handle a non-successful response
+                        error : function(xhr,errmsg,err) {
+                            console.log(xhr.status + ": " + xhr.responseText); // provide a bit more info about the error to the console
+                        } });
+                    j = j+3;
+                    i = i+1;
+                }
+
+            }
+        });
+    </script>
+        <title>Dashboard Display</title>
+        <meta name="Dashboard Edit"
+        content="width=device-width, initial-scale=1.0">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="{% static "index/css/main.css" %}">
+    </head>
+
+    <body>
+        <header><h1>Web Dashboard</h1></header>
+        <div class="contain-box">
+            <div class="display-cell" style="width: 100%">
+                <div id="component-container" class="component-container" style="width: 60%">
+                    <p id="mainbanner">Displaying User: {{ username }}</p>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
